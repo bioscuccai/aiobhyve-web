@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1>GRUB</h1>
+
+    <form action="/grub" method="post">
+        {{form.debug.label}}
+        {{form.debug}}
+
+        {{form.name.label}}
+        {{form.name}}
+
+        {{form.memory.label}}
+        {{form.memory}}
+
+        {{form.disks.label}}
+        {{form.disks(class_='multi-select')}}
+
+        {{form.isos.label}}
+        {{form.isos(class_='multi-select')}}
+
+        {{form.root_device.label}}
+        {{form.root_device}}
+
+        {{form.preset.label}}
+        {{form.preset}}
+
+        {{form.command.label}}
+        {{form.command}}
+
+        <input type="submit" value="Load">
+    </form>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+        console.log("js loaded");
+        $("#preset").on("change", e => {
+            console.log("cchange");
+            let cmdVal = "";
+            let rootVal = "";
+            switch($("#preset").val()) {
+                case 'netbsd-cd':
+                    cmdVal = "knetbsd -h -r cd0a /netbsd";
+                    rootVal = "cd0";
+                    break;
+                case 'netbsd-hd':
+                    cmdVal = "knetbsd -h -r ld0a /netbsd";
+                    rootVal = "hd0,msdos1";
+                    break;
+                case 'openbsd-cd':
+                    cmdVal = "kopenbsd -h com0 /6.2/amd64/bsd.rd";
+                    rootVal = "cd0";
+                    break;
+                case 'openbsd-hd':
+                    cmdVal = "kopenbsd -h com0 -r sd0a /bsd";
+                    rootVal = "hd0,openbsd1";
+                    break;
+            }
+
+            $("#command").val(cmdVal);
+            $("#root_device").val(rootVal);
+        });
+    </script>
+{% endblock %}

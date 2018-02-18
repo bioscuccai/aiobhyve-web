@@ -1,0 +1,34 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+      <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+      <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+
+      <style>
+          .multi-select {
+              height: 150px;
+          }
+      </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="column column-20">
+                    <ul>
+                        <li><a href="/vms">VMs</a></li>
+                        <li><a href="/dnsmasq">Dnsmasq</a></li>
+                        <li><a href="/isos">ISOs</a></li>
+                        <li><a href="/disks">Disks</a></li>
+                        <li><a href="/bhyveload">bhyveload</a></li>
+                        <li><a href="/grub">GRUB</a></li>
+                    </ul>
+                </div>
+                <div class="column column-80">
+                    {% block main%}
+                    {%endblock%}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

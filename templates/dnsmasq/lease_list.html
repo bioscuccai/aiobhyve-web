@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block main %}
+  <h1>Dnsmasq leases</h1>
+  <table>
+    <thead>
+      <tr>
+        <td>Hostname</td>
+        <td>IP</td>
+        <td>MAC</td>
+        <td>Timestamp</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for lease in leases %}
+        <tr>
+          <td>{{lease.hostname}}</td>
+          <td>{{lease.ip}}</td>
+          <td>{{lease.mac}}</td>
+          <td>{{lease.timestamp}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

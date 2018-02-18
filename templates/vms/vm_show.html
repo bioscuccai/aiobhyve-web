@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1>{{name}}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Key</td>
+                <td>Value</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for stat in stats %}
+                <tr>
+                    <td>{{stat.key}}</td>
+                    <td>{{stat.value}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block main %}
+    <h1>New VM</h1>
+
+    <form action="/vms" method="post">
+        {{form.debug.label}}
+        {{form.debug}}
+
+        {{form.name.label}}
+        {{form.name}}
+
+        {{form.cores.label}}
+        {{form.cores}}
+
+        {{form.memory.label}}
+        {{form.memory}}
+
+        <label for="">BIOS</label>
+        {{form.bios}}
+
+        {{form.vnc_wait.label}}
+        {{form.vnc_wait}}
+
+        {{form.enable_framebuffer.label}}
+        {{form.enable_framebuffer}}
+
+        <label for="">Framebuffer port</label>
+        {{form.framebuffer()}}
+
+        {{form.hostbridge.label}}
+        {{form.hostbridge()}}
+
+        {{form.hostbridge_type.label}}
+        {{form.hostbridge_type}}
+
+        {{form.loader.label}}
+        {{form.loader}}
+
+        {{form.tap.label}}
+        {{form.tap}}
+
+        {{form.console.label}}
+        {{form.console}}
+
+        {{form.isos.label}}
+        {{form.isos(class_='multi-select')}}
+
+        {{form.disks.label}}
+        {{form.disks(class_='multi-select')}}
+
+        <input type="submit" value="Create">
+    </form>
+
+    <script>
+        $("#tap").on('change', e=> {
+            let tapNum = $("#tap").val().match(/(\d*)$/)[0];
+            $('#console').val('/dev/nmdm' + tapNum + 'B');
+        });
+    </script>
+{% endblock %}

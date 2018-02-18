@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1>VMs</h1>
+    <div>
+        <a href="/vms/new" class="button">New</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for vm in vms %}
+                <tr>
+                    <td>{{vm}}</td>
+                    <td>
+                        <a href="/vms/{{vm}}" class="button">Show</a>
+                        <a href="/vms/{{vm}}/poweroff" class="button">Poweroff</a>
+                        <a href="/vms/{{vm}}/destroy" class="button">Destroy</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

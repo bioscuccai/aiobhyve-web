@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block main %}
+    <h1>bhyveload</h1>
+    <form action="/bhyveload" method="post">
+        {{form.name.label}}
+        {{form.name}}
+
+        {{form.memory.label}}
+        {{form.memory}}
+
+        {{form.image.label}}
+        {{form.image}}
+        
+        {{form.console.label}}
+        {{form.console}}
+
+        <input type="submit" value="Load">
+    </form>
+{% endblock %}

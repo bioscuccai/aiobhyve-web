@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <form action="/disks" method="post">
+        <label for="">Disk paths</label>
+<textarea name="disks" id="" cols="30" rows="50">{% for disk in disks %}{{disk}}
+{% endfor %}</textarea>
+        <input type="submit" value="Update">
+    </form>
+{% endblock %}

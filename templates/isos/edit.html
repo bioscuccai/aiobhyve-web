@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <form action="/isos" method="post">
+        <label for="">Iso paths</label>
+<textarea name="isos" id="" cols="30" rows="50">{% for iso in isos %}{{iso}}
+{% endfor %}</textarea>
+        <input type="submit" value="Update">
+    </form>
+{% endblock %}
